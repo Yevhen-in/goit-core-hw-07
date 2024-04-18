@@ -99,7 +99,7 @@ class AddressBook(UserDict):
                     congratulation_date = birthday_this_year + timedelta(days=2)
                 if birthday_this_year.weekday() == 6:
                     congratulation_date = birthday_this_year + timedelta(days=1)
-                result.append(f"Contact name: {contact.name}, birthday: {congratulation_date.strftime("%d.%m.%Y")}")
+                result.append(f"Contact name: {contact.name}, birthday: {congratulation_date.strftime('%d.%m.%Y')}")
                   
             return result
 
@@ -181,8 +181,9 @@ def birthdays(args, book: AddressBook):
             return None
         else:
             return birthdays_next_week
-    except AttributeError:
+    except AttributeError or ValueError or IndexError:
         return None
+    
 
 def main():
     book = AddressBook()
